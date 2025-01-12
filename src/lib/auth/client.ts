@@ -41,8 +41,8 @@ class AuthClient {
     // Make API request
 
     // We do not handle the API, so we'll just generate a token and store it in localStorage.
-    const token = generateToken();
-    localStorage.setItem('custom-auth-token', token);
+    // const token = generateToken();
+    // localStorage.setItem('custom-auth-token', token);
 
     return {};
   }
@@ -61,8 +61,8 @@ class AuthClient {
       return { error: 'Invalid credentials' };
     }
 
-    const token = generateToken();
-    localStorage.setItem('custom-auth-token', token);
+    // const token = generateToken();
+    // localStorage.setItem('custom-auth-token', token);
 
     return {};
   }
@@ -79,7 +79,7 @@ class AuthClient {
     // Make API request
 
     // We do not handle the API, so just check if we have a token in localStorage.
-    const token = localStorage.getItem('custom-auth-token');
+    const token = localStorage.getItem('authToken');
 
     if (!token) {
       return { data: null };
@@ -89,7 +89,7 @@ class AuthClient {
   }
 
   async signOut(): Promise<{ error?: string }> {
-    localStorage.removeItem('custom-auth-token');
+    localStorage.removeItem('authToken');
 
     return {};
   }

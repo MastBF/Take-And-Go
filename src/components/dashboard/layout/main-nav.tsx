@@ -11,7 +11,7 @@ import { Bell as BellIcon } from '@phosphor-icons/react/dist/ssr/Bell';
 import { List as ListIcon } from '@phosphor-icons/react/dist/ssr/List';
 import { MagnifyingGlass as MagnifyingGlassIcon } from '@phosphor-icons/react/dist/ssr/MagnifyingGlass';
 import { Users as UsersIcon } from '@phosphor-icons/react/dist/ssr/Users';
-
+import { IoExitOutline } from "react-icons/io5";
 import { usePopover } from '@/hooks/use-popover';
 
 import { MobileNav } from './mobile-nav';
@@ -54,25 +54,8 @@ export function MainNav(): React.JSX.Element {
               </IconButton>
             </Tooltip>
           </Stack>
-          <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
-            <Tooltip title="Contacts">
-              <IconButton>
-                <UsersIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Notifications">
-              <Badge badgeContent={4} color="success" variant="dot">
-                <IconButton>
-                  <BellIcon />
-                </IconButton>
-              </Badge>
-            </Tooltip>
-            <Avatar
-              onClick={userPopover.handleOpen}
-              ref={userPopover.anchorRef}
-              src="/assets/avatar.png"
-              sx={{ cursor: 'pointer' }}
-            />
+          <Stack sx={{ alignItems: 'center', }} direction="row" spacing={2}>
+            <IoExitOutline onClick={userPopover.handleOpen} style={{cursor:'pointer'}} />
           </Stack>
         </Stack>
       </Box>
