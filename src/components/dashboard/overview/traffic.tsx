@@ -24,7 +24,7 @@ export interface TrafficProps {
   chartSeries: number[];
   labels: string[];
   sx?: SxProps;
-  topStores?: { name: string; sales: number }[]; // Add top stores prop
+  topStores?: { branchAddress: string; percentage: number }[]; // Add top stores prop
 }
 
 export function Traffic({ chartSeries, labels, sx, topStores = [] }: TrafficProps): React.JSX.Element {
@@ -67,7 +67,7 @@ export function Traffic({ chartSeries, labels, sx, topStores = [] }: TrafficProp
               <Stack spacing={1} >
                 {topStores.map((store, index) => (
                   <Typography key={index} variant="body2" sx={{borderBottom:'1px solid #dadde3', width: '100%'}}>
-                    {store.name}: {store.sales} purchases
+                    {store.branchAddress}: {store.percentage} %
                   </Typography>
                 ))}
               </Stack>

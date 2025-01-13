@@ -16,11 +16,17 @@ import { Traffic } from '@/components/dashboard/overview/traffic';
 import axios from 'axios';
 
 // export const metadata = { title: `Overview | Dashboard | ${config.site.name}` } satisfies Metadata;
+interface Statistics {
+  totalProfit: number;
+  userCount: number;
+  sales: number[];
+  branchPercentage: any[];
+  products: any[]; // Замените `any` на более точный тип, если он известен
+}
 
 export default function Page(): React.JSX.Element {
-  const [statistics, setStatistics] = React.useState(null);
+  const [statistics, setStatistics] = React.useState<Statistics | null>(null);
   const token = localStorage.getItem('authToken')
-
     async function fetchStatistics(timeFrame: number) {
       try {
         const response = await axios.get(`https://gazansolution-production.up.railway.app/api/v1/Order/statistics?timeFrame=${timeFrame}`, {
@@ -30,6 +36,7 @@ export default function Page(): React.JSX.Element {
         }
         );
         setStatistics(response.data);
+        console.log(response.data.branchPercentage)
       } catch (error) {
         console.error('Error fetching statistics:', error);
       }
@@ -114,7 +121,7 @@ export default function Page(): React.JSX.Element {
       <Grid lg={8} xs={12}>
         <Sales
           chartSeries={[
-            { name: 'This year', data: statistics?.sales ?? 0 },
+            { name: 'This year', data: statistics?.sales ?? [] },
           ]}
           sx={{ height: '100%' }}
         />
@@ -124,7 +131,7 @@ export default function Page(): React.JSX.Element {
       </Grid>
       <Grid lg={12} md={10} xs={12}>
         <LatestProducts
-          products={statistics?.products ?? 0}
+          products={statistics?.products ?? []}
           sx={{ height: '100%' }}
         />
       </Grid>
