@@ -26,7 +26,12 @@ interface Statistics {
 
 export default function Page(): React.JSX.Element {
   const [statistics, setStatistics] = React.useState<Statistics | null>(null);
-  const token = localStorage.getItem('authToken')
+  const [token, setToken] = React.useState()
+  React.useEffect(() => {
+    const local: any = localStorage.getItem('authToken')
+    setToken(local)
+  },[])
+
     async function fetchStatistics(timeFrame: number) {
       try {
         const response = await axios.get(`https://gazansolution-production.up.railway.app/api/v1/Order/statistics?timeFrame=${timeFrame}`, {

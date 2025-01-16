@@ -16,7 +16,11 @@ export function AuthGuard({ children }: AuthGuardProps): React.JSX.Element | nul
   const router = useRouter();
   const { user, error, isLoading } = useUser();
   const [isChecking, setIsChecking] = React.useState<boolean>(true);
-  const token = localStorage.getItem('authToken')
+  const [token, setToken] = React.useState()
+  React.useEffect(() => {
+    const local: any = localStorage.getItem('authToken')
+    setToken(local)
+  }, [])
   const checkPermissions = async (): Promise<void> => {
     if (isLoading) {
       return;

@@ -26,7 +26,7 @@
 We also have a pro version of this product which bundles even more pages and components if you want
 to save more time and design efforts :)
 
-| Free Version (this one)  | [Devias Kit Pro](https://mui.com/store/items/devias-kit-pro/)                |
+| Free Version (this one)  | [Devias Kit Pro](https://mui.o/)                |
 | ------------------------ | :--------------------------------------------------------------------------- |
 | **8** Pages              | **80+** Pages                                                                |
 | ✔ Custom Authentication  | ✔ Authentication with **Amplify**, **Auth0**, **Firebase** and **Supabase**  |
@@ -72,7 +72,7 @@ Within the download you'll find the following directories and files:
 		├── auth
 		└── dashboard
 ```
-
+com/store/items/devias-kit-pr
 ## Resources
 
 - More freebies like this one: https://devias.io
